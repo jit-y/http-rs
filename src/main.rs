@@ -17,9 +17,9 @@ fn run() -> std::io::Result<()> {
 
         print!("{:?}", stream);
 
-        let resp = "OK".as_bytes();
-
-        stream.write(&resp)?;
+        stream.write(&"HTTP/1.1 200 OK\n".as_bytes())?;
+        stream.write(&"Content-Length: 0\n".as_bytes())?;
+        stream.write(&"\n".as_bytes())?;
     }
 
     Ok(())
